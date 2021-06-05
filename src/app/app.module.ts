@@ -6,14 +6,14 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { WorldWarOneComponent } from './world-war-one/world-war-one.component';
-import { WorldWarTwoComponent} from './world-war-two/world-war-two.component';
+// import { WorldWarOneComponent } from './world-war-one/world-war-one.component';
+// import { WorldWarTwoComponent} from './world-war-two/world-war-two.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    WorldWarOneComponent,
-    WorldWarTwoComponent
+    AppComponent
+    // WorldWarOneComponent,
+    // WorldWarTwoComponent
   ],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],

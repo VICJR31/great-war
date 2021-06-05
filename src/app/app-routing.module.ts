@@ -11,6 +11,23 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    //(6/5/21) DELETE CODE DIRECTLY BELOW THIS ONE!!!!
+    path: 'particpants',
+    loadChildren: () => import('./pages/particpants/particpants.module').then( m => m.ParticpantsPageModule)
+  },
+  {
+    path: 'fronts',
+    loadChildren: () => import('./pages/fronts/fronts.module').then( m => m.FrontsPageModule)
+  },
+  {
+    path: 'aftermath',
+    loadChildren: () => import('./pages/aftermath/aftermath.module').then( m => m.AftermathPageModule)
+  },
+  {
+    path: 'participants',
+    loadChildren: () => import('./pages/participants/participants.module').then( m => m.ParticipantsPageModule)
+  },
 ];
 
 @NgModule({
