@@ -12,11 +12,6 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    //(6/5/21) DELETE CODE DIRECTLY BELOW THIS ONE!!!!
-    path: 'particpants',
-    loadChildren: () => import('./pages/particpants/particpants.module').then( m => m.ParticpantsPageModule)
-  },
-  {
     path: 'fronts',
     loadChildren: () => import('./pages/fronts/fronts.module').then( m => m.FrontsPageModule)
   },
