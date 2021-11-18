@@ -1,8 +1,18 @@
+<!-- PLAN:
+1. Connect to MongoDB with Mac (by 11/20/21)
+   -Connect to Heroku or another vps by the same date above
+2. User signup when submit is clicked (by 11/27/21)
+3. User login when submit is clicked (by 12/4/21)
+4. Display username and email on home page / improve UI (by 12/10/21) 
+5. Connect to Github (download it and push/pull only the extension only!) 
+   (by 12/17/21)
+6. Improve UI and fill in code (12/24/21)-->
+
 <ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button color="primary">
-        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      <ion-button color="primary" routerLink="/login" >
+        <ion-icon name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-buttons slot="end">
@@ -11,15 +21,32 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
   <h1>Create your<br />Account</h1>
 
-  <form id="form">
-    <app-input placeholder="Your Name"></app-input>
-    <app-input placeholder="Email"></app-input>
-    <app-input type="password" placeholder="Password"></app-input>
-    <ion-button expand="block" shape="round">Join Us</ion-button>
-  </form>
+  <!-- <form id="form"> -->
+    <!-- <app-input [(ngModel)]="username" placeholder="Your Name"></app-input>
+    <app-input [(ngModel)]="email" placeholder="Email"></app-input>
+    <app-input [(ngModel)]="password" type="password" placeholder="Password"></app-input> -->
+
+    <ion-item>
+      <ion-input [(ngModel)]="username" placeholder="Username" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="email" placeholder="Email" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="password" placeholder="Password" type="password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Which alliance? </ion-label>
+      <ion-select [(ngModel)]='powers'>
+          <ion-select-option value="central">Central Powers</ion-select-option>
+          <ion-select-option value="entente">Entente</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-button (click)='signup()' expand="block" shape="round">Join Us</ion-button>
+  <!-- </form> -->
 
   <p>By pressing 'Join Us' you agree to <br />our terms & conditions.</p>
 </ion-content>
