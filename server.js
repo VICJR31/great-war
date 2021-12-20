@@ -10,10 +10,10 @@ function requireHTTPS(req, res, next) {
     next();
 }
 
-app.use(express.static('./dist/<great-war>'));
+app.use(express.static('<great-war>'));
 
 app.get('/*', function(req, res) {
-    res.sendFile('www/index.html', {root: 'dist/<great-war>/'}
+    res.sendFile('www/index.html', {root: '<great-war>'}
   );
 });
 
