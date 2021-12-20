@@ -1,7 +1,3 @@
-const express = require('express');
-const app = express();
-app.use(requireHTTPS);
-
 function requireHTTPS(req, res, next) {
     // The 'x-forwarded-proto' check is for Heroku
     if (!req.secure && req.get('x-forwarded-proto') !== 'https') {
@@ -10,10 +6,15 @@ function requireHTTPS(req, res, next) {
     next();
 }
 
-app.use(express.static('<great-war>'));
+const express = require('express');
+const app = express();
+
+app.use(requireHTTPS);
+
+app.use(express.static('./dist/great-war'));
 
 app.get('/*', function(req, res) {
-    res.sendFile('www/index.html', {root: '<great-war>'}
+    res.sendFile('www/index.html', {root: 'dist/great-war/'}
   );
 });
 
