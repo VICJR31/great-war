@@ -28,14 +28,22 @@ const path = require('path');
 const app = express();
 
 //  Serve only the static files form the dist directory
-app.use(express.static('./dist/great-war'));
+// app.use(express.static('./dist/great-war'));
 
-app.get('/*', (req, res) => 
-    res.sendFile('index.html', {root: 'dist/great-war'}),
-);
+// app.get('/*', (req, res) => 
+//     res.sendFile('index.html', {root: 'dist/great-war'}),
+// );
+
+app.use(express.static(process.env.PWD + '/www'));
+
+app.get('*', function (req, res) {
+  const index = path.join(__dirname, 'www', 'index.html');
+  res.sendFile(index);
+});
 
 //  Start the app by listening on the default Heroku port
 app.listen(process.env.PORT || 8080);
+console.log("Listening in on PORT 8080")
 
 // removed from package.json underneath e2e
 // "heroku-postbuild": "ng build --prod"
