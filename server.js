@@ -3,7 +3,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const app = express();
 
-mongoose.connect('', {
+mongoose.connect('mongodb+srv://dbAlex:idk1234@greatwarcluster0.g3qjw.mongodb.net/GreatWarCluster0?retryWrites=true&w=majority', {
   useUnifiedTopology : true,
   useNewParser : true,
 }).then(console.log('Connected to mongo db!'))
