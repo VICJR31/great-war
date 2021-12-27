@@ -6,7 +6,7 @@ const app = express();
 mongoose.connect('mongodb+srv://dbAlex:idk1234@greatwarcluster0.g3qjw.mongodb.net/Data', {
   useUnifiedTopology : true,
   useNewParser : true,
-}).then(console.log('Connected to mongo db!'))
+}).then(console.log('Connected to mongo db!'));
 
 app.use(express.static(process.env.PWD + '/www'));
 
