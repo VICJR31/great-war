@@ -4,8 +4,8 @@ const mongoose = require('mongoose');
 const app = express();
 
 mongoose.connect('mongodb+srv://dbAlex:idk1234@greatwarcluster0.g3qjw.mongodb.net/test', {
-  useUnifiedTopology : true,
-  useNewParser : true,
+  useUnifiedTopology: true,
+  useNewParser: true,
 }).then(console.log('Connected to mongo db!'));
 
 app.use(express.static(process.env.PWD + '/www'));
