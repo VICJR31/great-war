@@ -37,7 +37,8 @@ mongoose.connect('mongodb+srv://dbAlex:idk1234@greatwarcluster0.g3qjw.mongodb.ne
   // Missing 'config' in Compass
   // Check out: Discord bot regarding 'node .'
   useUnifiedTopology: true,
-  useNewParser: true,
+  // useNewParser: true,
+  useNewURLParser: true,
 }).then(console.log('Connected to mongo db!'));
 
 app.use(express.static(process.env.PWD + '/www'));
