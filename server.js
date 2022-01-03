@@ -4,19 +4,19 @@ const mongoose = require('mongoose');
 const app = express();
 
 // For Discord bot (start: 'node .')
-const Discord = require('discord.js');
-const client = new Discord.Client();
-const token = "bot token here";
+// const Discord = require('discord.js');
+// const client = new Discord.Client();
+// const token = "bot token here";
 
-client.on('ready', () => {
-    console.log('Ready!');
-});
+// client.on('ready', () => {
+//     console.log('Ready!');
+// });
 
-client.on('message', message => {
-   if (message.content === '!ping') {
-       message.channel.send('Pong.');
-}
-});
+// client.on('message', message => {
+//    if (message.content === '!ping') {
+//        message.channel.send('Pong.');
+// }
+// });
 
 
 // var mongoUrl = '"mongodb+srv://dbAlex:idk1234@greatwarcluster0.g3qjw.mongodb.net/Data"'
@@ -50,7 +50,7 @@ app.get('*', function (req, res) {
 //  Start the app by listening on the default Heroku port
 app.listen(process.env.PORT || 8080);
 console.log("Listening in on PORT 8080");
-client.login(token);
+// client.login(token);
 
 // removed from package.json underneath e2e
 // "heroku-postbuild": "ng build --prod"
