@@ -1,45 +1,30 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+// var bodyParser = require("body-parser");
+
 const app = express();
 
-// For Discord bot (start: 'node .')
-// const Discord = require('discord.js');
-// const client = new Discord.Client();
-// const token = "bot token here";
+// From the SignUp Form with HTML, Node JS, MongoDB
+// app.use(bodyParser.json());
+// app.use(express.static('src/app/signup'));
+// app.use(bodyParser.urlencoded({
+//     extended:true
+// }));
 
-// client.on('ready', () => {
-//     console.log('Ready!');
-// });
-
-// client.on('message', message => {
-//    if (message.content === '!ping') {
-//        message.channel.send('Pong.');
-// }
-// });
-
-
-// var mongoUrl = '"mongodb+srv://dbAlex:idk1234@greatwarcluster0.g3qjw.mongodb.net/Data"'
-// var mongoose = require('mongoose');
-
-// // updated 2021
-// mongoose.Promise = global.Promise;
-// mongoose.set('useNewUrlParser', true);
-// mongoose.set('useFindAndModify', false);
-// mongoose.set('useCreateIndex', true);
-    
-// mongoose.connect(mongoUrl, { useUnifiedTopology: true })
-// .then(() => { log('Connected to MongoDB: %s \n ', mongoUrl) }) 
-// .catch((err) => { error('MongoDB connection error: %s \n', err); })
-
-
+// Connects to MongoDB Database
 mongoose.connect('mongodb+srv://dbAlex:idk1234@greatwarcluster0.g3qjw.mongodb.net/Data', {
   // Missing 'config' in Compass
   // Check out: Discord bot regarding 'node .'
   useUnifiedTopology: true,
   // useNewParser: true,
   useNewURLParser: true,
-}).then(console.log('Connected to mongo db!'));
+});
+
+var db = mongoose.connection;
+
+db.on('error',()=>console.log("Error in Connecting to Database"));
+db.once('open',()=>console.log("Connected to Database"));
 
 app.use(express.static(process.env.PWD + '/www'));
 
@@ -48,10 +33,41 @@ app.get('*', function (req, res) {
   res.sendFile(index);
 });
 
+
+// app.post("/sign_up",(req,res)=>{
+//   var name = req.body.name;
+//   var email = req.body.email;
+//   var password = req.body.password;
+
+//   var data = {
+//       "name": name,
+//       "email" : email,
+//       "password" : password
+//   }
+
+//   db.collection('users').insertOne(data,(err,collection)=>{
+//       if(err){
+//           throw err;
+//       }
+//       console.log("Record Inserted Successfully");
+//   });
+
+//   return res.redirect('success.page.html')
+
+// })
+
+
+// app.get("/",(req,res)=>{
+//   res.set({
+//       "Allow-access-Allow-Origin": '*'
+//   })
+//   return res.redirect('index.html');
+//   // res.send("Hello From the Other Side");
+// }).listen(8080);
+
 //  Start the app by listening on the default Heroku port
 app.listen(process.env.PORT || 8080);
 console.log("Listening in on PORT 8080");
-// client.login(token);
 
 // removed from package.json underneath e2e
 // "heroku-postbuild": "ng build --prod"
