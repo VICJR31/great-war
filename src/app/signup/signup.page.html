@@ -16,6 +16,9 @@ when trying to open my web app, works on local host' (12/3/21)  -->
 <!-- (12/9/21) Link for process: https://devcenter.heroku.com/articles/git#creating-a-heroku-remote
 Stopped on Deploying code -->
 
+<!-- (1/15/21) Look at Udemy course for Node.js, on Section 10 from the 2nd vid to the 3rd (maybe the 4th
+or more too). Might help with the registering users issue on signup (this file and the rest with the same name) -->
+
 <ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
@@ -36,18 +39,16 @@ Stopped on Deploying code -->
     <!-- <app-input [(ngModel)]="username" placeholder="Your Name"></app-input>
     <app-input [(ngModel)]="email" placeholder="Email"></app-input>
     <app-input [(ngModel)]="password" type="password" placeholder="Password"></app-input> -->
-    <form action="/sign_up" method="POST">
-      <ion-item>
-        <!-- <ion-input [(ngModel)]="username" placeholder="Username" type="text"></ion-input> -->
-        <ion-input type="text" class="box" id="name" name="name" placeholder="Name" required></ion-input>
+    <!-- <form action="/sign_up" method="POST"> -->
+      <!-- <ion-item>
+        <ion-input [(ngModel)]="username" placeholder="Username" type="text"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text" class="box" id="email" name="email" placeholder="Email" required></ion-input>
+        <ion-input [(ngModel)]="email" placeholder="Email" type="text"></ion-input>
       </ion-item>
       <ion-item>
-        <!-- <ion-input [(ngModel)]="password" placeholder="Password" type="password"></ion-input> -->
-        <ion-input type="text" class="box" id="password" name="password" placeholder="Password" required></ion-input>
-      </ion-item>
+        <ion-input [(ngModel)]="password" placeholder="Password" type="password"></ion-input>
+      </ion-item> -->
       <!-- <ion-item>
         <ion-label>Which alliance? </ion-label>
         <ion-select [(ngModel)]='powers'>
@@ -56,8 +57,38 @@ Stopped on Deploying code -->
         </ion-select>
       </ion-item> -->
       <!-- <ion-button (click)='signup()' expand="block" shape="round">Join Us</ion-button> -->
-      <ion-button type="submit" value="Submit" id="submit" expand="block" shape="round">Join Us</ion-button>
-    </form>
+
+  <!-- <form action="http://localhost:8080" method="POST"> -->
+  <!-- <form [formGroup]="recruitForm" (ngSubmit)="onSubmit()" action="http://localhost:3000/api/users" method="POST"> -->
+  <form [formGroup]="recruitForm" (ngSubmit)="onSubmit()">
+    <!-- Make some methods to make a POST request
+      'http-client' to send request 
+          Might have to make a variable for URL string -->
+    <ion-item>
+      <!-- <ion-input placeholder="Username" type="text" id="name" name="name" required></ion-input> -->
+      <ion-input placeholder="Username" type="text" formControlName="name" id="name" required></ion-input>
+        <small class="alert-danger" *ngIf="name.invalid && name.touched">Please enter your first name</small>
+        <small class="alert-danger" *ngIf="name.invalid && name.touched && name.errors['minlength']">You must add at least 5 characters</small>
+      <!-- <span class="alert-danger">Please enter your first name</span> -->
+      <!-- <ion-input type="text" class="box" id="name" name="name" placeholder="Name" required></ion-input> -->
+    </ion-item>
+    <ion-item>
+      <ion-input placeholder="Email" type="email" formControlName="email" id="email" required></ion-input>
+        <small class="alert-danger" *ngIf="email.invalid && email.touched">Please enter your email</small>
+        <small class="alert-danger" *ngIf="email.invalid && email.touched && email.errors['email']">Email address is invalid</small>
+      <!-- <ion-input type="text" class="box" id="name" name="name" placeholder="Name" required></ion-input> -->
+    </ion-item>
+    <ion-item>
+      <ion-input placeholder="Password" type="password" formControlName="password" id="password" required></ion-input>
+        <small class="alert-danger" *ngIf="password.invalid && password.touched">Please enter your password</small>
+      <!-- <ion-input type="text" class="box" id="name" name="name" placeholder="Name" required></ion-input> -->
+    </ion-item>
+    <ion-button [disabled]="recruitForm.invalid" type="submit" routerLink="/login" expand="block" shape="round">Join Us</ion-button>
+    <!-- <ion-button data-dismiss="modal" type="submit" expand="block" shape="round">Join Us</ion-button> -->
+    <!-- <input type="submit" value="Submit Form"> -->
+  </form>
+      <!-- <ion-button (click)='signup()' type="submit" value="Submit" id="submit" expand="block" shape="round">Join Us</ion-button> -->
+    <!-- </form> -->
 
   <p>By pressing 'Join Us' you agree to <br />our terms & conditions.</p>
 </ion-content>

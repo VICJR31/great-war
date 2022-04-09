@@ -13,14 +13,38 @@
 
 <ion-content>
   <div id="header">
-    <h1>The Great Wee</h1>
+    <h1>The Great War</h1>
     <!-- <strong>The Great War</strong> -->
     <img src="../../assets/WW1Flag.jpg" />
   </div>
 
-  <form id="form">
+  <!-- <form id="form">
     <app-input placeholder="Email"></app-input>
     <app-input type="password" placeholder="Password"></app-input>
     <ion-button expand="block" shape="round">Login</ion-button>
+  </form> -->
+
+  <!-- <form action="http://localhost:3000/api/auth" method="POST"> -->
+  <!-- <form action="http://localhost:8080" method="POST"> -->
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <!-- Form for signup works, finally. Now, route the authorization to login page. -->
+    <ion-item>
+      <ion-input placeholder="Email" type="email" formControlName="email" id="email" required></ion-input>
+      <!-- <ion-input type="text" class="box" id="name" name="name" placeholder="Name" required></ion-input> -->
+    </ion-item>
+    <ion-item>
+      <ion-input placeholder="Password" type="password" formControlName="password" id="password" required></ion-input>
+      <!-- <ion-input type="text" class="box" id="name" name="name" placeholder="Name" required></ion-input> -->
+    </ion-item>
+    <!-- <div>
+        <label>Email:</label>
+        <input type="email" id="email" name="email" required>
+    </div>
+    <div>
+        <label>Password:</label>
+        <input type="password" id="password" name="password" required>
+    </div> -->
+    <ion-button [disabled]="loginForm.invalid" type="submit" routerLink="/home" expand="block" shape="round">Submit</ion-button>
+    <!-- <input type="submit" value="Submit Form"> -->
   </form>
 </ion-content>

@@ -1,6 +1,8 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+// (2/16/22): Use javascript (or Angular, however, it might take longer) to have a submit button where
+// the user will go to if logined in or signed-up successfully
 // var bodyParser = require("body-parser");
 
 const app = express();
@@ -13,18 +15,18 @@ const app = express();
 // }));
 
 // Connects to MongoDB Database
-mongoose.connect('mongodb+srv://dbAlex:idk1234@greatwarcluster0.g3qjw.mongodb.net/Data', {
-  // Missing 'config' in Compass
-  // Check out: Discord bot regarding 'node .'
-  useUnifiedTopology: true,
-  // useNewParser: true,
-  useNewURLParser: true,
-});
+// mongoose.connect('mongodb+srv://dbAlex:idk1234@greatwarcluster0.g3qjw.mongodb.net/Data', {
+//   // Missing 'config' in Compass
+//   // Check out: Discord bot regarding 'node .'
+//   useUnifiedTopology: true,
+//   // useNewParser: true,
+//   useNewURLParser: true,
+// });
 
-var db = mongoose.connection;
+// var db = mongoose.connection;
 
-db.on('error',()=>console.log("Error in Connecting to Database"));
-db.once('open',()=>console.log("Connected to Database"));
+// db.on('error',()=>console.log("Error in Connecting to Database"));
+// db.once('open',()=>console.log("Connected to Database"));
 
 app.use(express.static(process.env.PWD + '/www'));
 
@@ -32,6 +34,9 @@ app.get('*', function (req, res) {
   const index = path.join(__dirname, 'www', 'index.html');
   res.sendFile(index);
 });
+
+// Used to connect to 'app.use' above (1/14/22)
+// .then(console.log('Connected to mongo db!'));
 
 
 // app.post("/sign_up",(req,res)=>{
@@ -66,8 +71,10 @@ app.get('*', function (req, res) {
 // }).listen(8080);
 
 //  Start the app by listening on the default Heroku port
-app.listen(process.env.PORT || 8080);
-console.log("Listening in on PORT 8080");
+// app.listen(process.env.PORT || 8080);
+// console.log("Listening in on PORT 8080");
 
+const port = process.env.PORT || 8080;
+app.listen(port, () => console.log(`Listening on port ${port}...`));
 // removed from package.json underneath e2e
 // "heroku-postbuild": "ng build --prod"
