@@ -19,8 +19,8 @@ Stopped on Deploying code -->
 <!-- (1/15/21) Look at Udemy course for Node.js, on Section 10 from the 2nd vid to the 3rd (maybe the 4th
 or more too). Might help with the registering users issue on signup (this file and the rest with the same name) -->
 
-<ion-header class="ion-no-border">
-  <ion-toolbar>
+<ion-header>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-button color="primary" routerLink="/login" >
         <ion-icon name="arrow-back"></ion-icon>
@@ -33,7 +33,12 @@ or more too). Might help with the registering users issue on signup (this file a
 </ion-header>
 
 <ion-content class="ion-padding">
-  <h1>Create your<br />Account</h1>
+  <!-- <h1>Create your<br />Account</h1> -->
+
+  <ion-card class="ion-text-center ion-padding" id="header">
+    <h1>Create your<br />Account</h1>
+    <!-- <img src="../../assets/WW1Flag.jpg"/> -->
+  </ion-card>
 
   <!-- <form id="form"> -->
     <!-- <app-input [(ngModel)]="username" placeholder="Your Name"></app-input>
